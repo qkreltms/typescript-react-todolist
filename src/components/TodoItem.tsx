@@ -1,17 +1,19 @@
-import React from 'react';
-import { TodoModel } from '../models'
+import React from "react";
+import { ITodoModel } from "../models";
 
-interface Props {
-    todo: TodoModel
-    deleteTodo: (id: number) => void
+interface IProps {
+    todo: ITodoModel;
+    deleteTodo: (id: number) => void;
 }
 
-const TodoItem: React.SFC<Props> = (props) => {
+const TodoItem: React.SFC<IProps> = (props) => {
     return (
         <section>
-            <button onClick={() => props.deleteTodo}>delete</button><li>{props.todo.msg}</li>
+            <li>{props.todo.msg}
+                <button onClick={() => props.deleteTodo(props.todo.id)}>delete</button>
+            </li>
         </section>
-    )
-}
+    );
+};
 
-export default TodoItem
+export default TodoItem;

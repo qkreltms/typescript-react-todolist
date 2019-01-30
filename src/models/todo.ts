@@ -1,4 +1,4 @@
-export interface TodoModel {
-    id: number
-    msg: string
+export interface ITodoModel {
+    id: number;
+    msg: string;
 }
