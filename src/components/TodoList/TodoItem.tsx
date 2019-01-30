@@ -1,5 +1,6 @@
 import React from "react";
-import { ITodoModel } from "../models";
+import { FormattedMessage } from "react-intl";
+import { ITodoModel } from "../../models";
 
 interface IProps {
     todo: ITodoModel;
@@ -10,7 +11,9 @@ const TodoItem: React.SFC<IProps> = (props) => {
     return (
         <section>
             <li>{props.todo.msg}
-                <button onClick={() => props.deleteTodo(props.todo.id)}>delete</button>
+                <button onClick={() => props.deleteTodo(props.todo.id)}>
+                    <FormattedMessage id="delete" />
+                </button>
             </li>
         </section>
     );

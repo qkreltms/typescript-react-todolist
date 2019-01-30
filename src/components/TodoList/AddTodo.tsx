@@ -1,5 +1,6 @@
 import React from "react";
-import { ITodoModel } from "../models";
+import { FormattedMessage } from "react-intl";
+import { ITodoModel } from "../../models";
 
 interface IProps {
     addTodo: (todo: ITodoModel) => void;
@@ -22,7 +23,9 @@ class AddTodo extends React.Component<IProps, IState> {
             <section>
                 <form onSubmit={this.handleOnsubmit}>
                     <input type="text" onChange={this.setMsg} value={this.state.msg}></input>
-                    <button type="submit">Add</button>
+                    <button type="submit">
+                        <FormattedMessage id="add" />
+                    </button>
                 </form>
             </section>
         );

@@ -1,5 +1,5 @@
 import React from "react";
-import { ITodoModel } from "../models";
+import { ITodoModel } from "../../models";
 import AddTodo from "./AddTodo";
 import TodoItem from "./TodoItem";
 
@@ -9,13 +9,13 @@ interface IProps {
     addTodo: (todo: ITodoModel) => void;
 }
 
-const TodoList: React.SFC<IProps> = (props) => {
+export const TodoList: React.SFC<IProps> = (props) => {
     const todos = props.todos.length ? (
         props.todos.map((todo) => {
             return <TodoItem todo={todo} key={todo.id} deleteTodo={props.deleteTodo} />;
         })
     ) : (
-        <pre>Noting to do.</pre>
+        <pre>...</pre>
     );
 
     return (

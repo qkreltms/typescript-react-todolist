@@ -8,8 +8,7 @@
     "rulesDirectory": [],
     "linterOptions": {
         "exclude": [
-            "src/serviceWorker.ts",
-            "bin",
+            "src/serviceWorker.ts"
         ]
     }
 }

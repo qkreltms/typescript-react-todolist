@@ -1,44 +1,19 @@
 import React, { Component } from "react";
-import { ITodoModel } from "../models";
-import Header from "./Header";
-import TodoList from "./TodoList";
+import { NavBar } from "./Header";
 
-interface IState {
-  todos: ITodoModel[];
+interface IProps {
+  setLocale: (lang: string) => void;
 }
-
-class App extends Component<{}, IState> {
-  constructor(Iprops: {}) {
-    super(Iprops);
-
-    this.state = {
-      todos: [
-        {id: 1, msg: "todo1"},
-        {id: 2, msg: "todo2"},
-      ],
-    };
-  }
+export class App extends Component<IProps, {}> {
 
   public render() {
     return (
       <section className="App">
-        <Header />
-        <TodoList todos={this.state.todos} deleteTodo={this.deleteTodo} addTodo={this.addTodo}></TodoList>
+          <header>
+            <NavBar setLocale={this.props.setLocale} />
+          </header>
       </section>
     );
-  }
-
-  private deleteTodo = (id: number) => {
-    const newTodo = this.state.todos.filter((todo) => {
-      return todo.id !== id;
-    });
-
-    this.setState({todos: newTodo});
-  }
-
-  private addTodo = (todo: ITodoModel) => {
-    const newTodo = [...this.state.todos, todo];
-    this.setState({todos: newTodo});
   }
 }
 
