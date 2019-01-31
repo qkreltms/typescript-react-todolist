@@ -1,35 +1,33 @@
 import React from "react";
-import { render } from "react-dom";
 import { addLocaleData, IntlProvider } from "react-intl";
 import en from "react-intl/locale-data/en";
 import ko from "react-intl/locale-data/ko";
+import { connect } from "react-redux";
 import { HashRouter, Route, Switch } from "react-router-dom";
-import { About, App, TodoListContainer } from "./components";
+import { setLocale } from "./actions";
+import { App, TodoListContainer } from "./components";
+import About from "./components/About/About";
 import locale from "./i18n";
+import { IState } from "./reducers";
 
 addLocaleData([...en, ...ko]);
 
-interface IState {
+interface IProps {
   lang: string;
+  setLocale: (lang: string) => void;
 }
-export class Router extends React.Component<{}, IState> {
-  constructor(props: {}) {
+
+export class Router extends React.Component<IProps, {}> {
+  constructor(props: IProps) {
     super(props);
-
-    this.state = {
-      lang: localStorage.getItem("lang") || "en",
-    };
   }
 
-  public setLocale = (lang: string) => {
-    this.setState({ lang });
-  }
   public render() {
     return (
-      <IntlProvider locale={this.state.lang} messages={locale[this.state.lang]}>
+      <IntlProvider locale={this.props.lang} messages={locale[this.props.lang]}>
         <HashRouter>
           <div>
-            <App setLocale={this.setLocale}/>
+            <App setLocale={this.props.setLocale}/>
             <Switch>
               <Route exact path="/" component={TodoListContainer} />
               <Route path="/about" component={About} />
@@ -41,4 +39,12 @@ export class Router extends React.Component<{}, IState> {
   }
 }
 
-export default Router;
+const mapStateToProps = (state: IState) => ({
+    lang: state.locale.lang,
+});
+
+const mapDispatchToProps = (dispatch: any) => ({
+  setLocale: (lang: string) => dispatch(setLocale(lang)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Router);

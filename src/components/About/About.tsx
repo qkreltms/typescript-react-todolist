@@ -1,5 +1,6 @@
 import React from "react";
 import { FormattedMessage } from "react-intl";
+import { withColor } from "../../hoc";
 
 export const About: React.SFC<{}> = (props) => {
     return (
@@ -9,4 +10,4 @@ export const About: React.SFC<{}> = (props) => {
     );
 };
 
-export default About;
+export default withColor(About);
