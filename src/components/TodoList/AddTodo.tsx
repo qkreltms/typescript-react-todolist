@@ -33,7 +33,7 @@ class AddTodo extends React.Component<IProps, IState> {
 
     private handleOnsubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const newTodo = {id: Math.random(), msg: this.state.msg};
+        const newTodo = {id: Math.random(), msg: this.state.msg} as ITodoModel;
         this.props.addTodo(newTodo);
         this.setState({msg: ""});
     }

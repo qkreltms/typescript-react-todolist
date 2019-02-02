@@ -4,7 +4,7 @@ const createEmptyLocale = () => ({
     lang: localStorage.getItem("lang") || "en" ,
 });
 
-export const locale = (state = createEmptyLocale(), action: any) => {
+export const localeReducer = (state = createEmptyLocale(), action: any) => {
     switch (action.type) {
         case types.SETLOCALE: {
             return handleSetLocaleCompleted(state, action);

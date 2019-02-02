@@ -10,7 +10,7 @@ interface IProps {
 }
 
 export const TodoList: React.SFC<IProps> = (props) => {
-    const todos = props.todos.length ? (
+    const todos = props.todos && props.todos.length ? (
         props.todos.map((todo) => {
             return <TodoItem todo={todo} key={todo.id} deleteTodo={props.deleteTodo} />;
         })

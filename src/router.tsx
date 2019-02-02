@@ -8,7 +8,7 @@ import { setLocale } from "./actions";
 import { App, TodoListContainer } from "./components";
 import About from "./components/About/About";
 import locale from "./i18n";
-import { IState } from "./reducers";
+// import { IState } from "./reducers";
 
 addLocaleData([...en, ...ko]);
 
@@ -39,7 +39,7 @@ export class Router extends React.Component<IProps, {}> {
   }
 }
 
-const mapStateToProps = (state: IState) => ({
+const mapStateToProps = (state: any) => ({
     lang: state.locale.lang,
 });
 
