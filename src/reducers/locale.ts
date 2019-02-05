@@ -1,5 +1,9 @@
 import * as types from "../actions/types";
 
+export interface ILocaleState {
+    lang: string;
+}
+
 const createEmptyLocale = () => ({
     lang: localStorage.getItem("lang") || "en" ,
 });

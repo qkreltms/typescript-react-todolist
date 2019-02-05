@@ -1,15 +1,27 @@
-import React from "react";
+import React, { Component } from "react";
 
-export const withColor = <P extends object>(WrappedComponent: React.ComponentType<P>) => {
-    const colors = ["red", "blue", "orange"];
-    const randomColor = colors[Math.floor(Math.random() * 3)];
-    const className = `${randomColor}-text`;
+interface IProps {
+  color: string;
+}
 
-    return (props: any) => (
-        <div className={className}>
-            <WrappedComponent {...props} />
+// statelesscomponent or classcomponent만 인자로 가능
+export const withColor = (WrappedComponent: React.ComponentType<IProps>) =>
+  class WithColor extends Component<IProps, {}> {
+    private colors = ["red", "blue", "orange"];
+    private randomColor = this.colors[Math.floor(Math.random() * 3)];
+    private className = `${this.randomColor}-text`;
+
+    public constructor(props: IProps) {
+      super(props);
+    }
+
+    public render() {
+      return (
+        <div className={this.className}>
+          <WrappedComponent {...this.props} color={this.randomColor} />
         </div>
-    );
-};
+      );
+    }
+  };
 
 export default withColor;

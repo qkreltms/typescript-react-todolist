@@ -2,12 +2,20 @@ import React from "react";
 import { FormattedMessage } from "react-intl";
 import { withColor } from "../../hoc";
 
-export const About: React.SFC<{}> = (props) => {
-    return (
-        <section>
-            <FormattedMessage id="about" />
-        </section>
-    );
+interface IProps {
+  color: string;
+}
+
+export const About: React.SFC<IProps> = (props) => {
+  const style = {
+    color: props.color,
+  };
+
+  return (
+    <section style={style}>
+      <FormattedMessage id="about" />
+    </section>
+  );
 };
 
 export default withColor(About);

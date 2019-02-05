@@ -1,14 +1,13 @@
 import { combineReducers } from "redux";
-import { ITodoModel } from "../models";
-import { localeReducer } from "./locale";
-import { todoReducer } from "./todo";
+import { ILocaleState, localeReducer } from "./locale";
+import { ITodosState, todoReducer } from "./todo";
 
-// export interface IState {
-//     locale: any;
-//     todo: ITodoModel;
-// }
+export interface IState {
+    locale: ILocaleState;
+    todo: ITodosState;
+}
 
-export const rootReducer = combineReducers<any>({
+export const rootReducer = combineReducers<IState>({
     locale: localeReducer,
     todo: todoReducer,
-} as any);
+});
