@@ -1,10 +1,10 @@
 import { connect } from "react-redux";
 import * as actions from "../../actions";
 import { ITodoModel } from "../../models";
-// import { IState } from "../../reducers";
+import { IState } from "../../reducers";
 import TodoList from "./TodoList";
 
-const mapStateToProps = (state: any) => ({
+const mapStateToProps = (state: IState) => ({
   todos: state.todo.todos,
 });
 

@@ -1,3 +1,6 @@
 export const SETLOCALE = "SETLOCALE";
 export const ADD_TODO = "ADD_TODO";
 export const DELETE_TODO = "DELETE_TODO";
+export const REQUEST_DOG = "REQUEST_DOG";
+export const REQUEST_DOG_FAILED = "REQUEST_DOG_FAILED";
+export const REQUEST_DOG_SUCCESSFUL = "REQUEST_DOG_SUCCESSFUL";
