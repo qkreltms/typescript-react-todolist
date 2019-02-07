@@ -1,9 +1,11 @@
 import * as types from "./types";
 
-export const fetchDog = (url: string) => {
-  return fetch("https://dog.ceo/api/breeds/image/random")
+export const fetchDog = () => (dispatch: any) => {
+  const url = "https://dog.ceo/api/breeds/image/random";
+
+  return fetch(url)
     .then((res) => res.json())
-    .then((data) => fetchDogSuccessful(data), (err) => fetchDogFailed(err));
+    .then((data) => dispatch(fetchDogSuccessful(data)), (err) => dispatch(fetchDogFailed(err)));
 };
 
 export const requestDog = () => ({

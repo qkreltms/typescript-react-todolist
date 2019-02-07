@@ -13,7 +13,7 @@ export const initialState = {
 };
 
 export const randomDogReducer = (state = initialState, action: any) => {
-  switch (action) {
+  switch (action.type) {
     case types.REQUEST_DOG:
       return {
         ...state,

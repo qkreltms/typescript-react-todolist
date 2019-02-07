@@ -1,18 +1,16 @@
 import React from "react";
-import * as actions from "../../actions";
 
 interface IProps {
-  dispatch: (action: any) => void;
+  fetchDog: () => void;
   errMessage: string;
   img: string;
   status: string;
 }
 
 export const RandomDog: React.SFC<IProps> = (props) => {
-  const url = "https://dog.ceo/api/breeds/image/random";
-  return (
+    return (
     <section>
-      <button onClick={() => props.dispatch(actions.fetchDog(url))}>click</button>
+      <button onClick={() => props.fetchDog()}>click</button>
       {!props.img ? (
         <p>loading...</p>
       ) : props.errMessage ? (
