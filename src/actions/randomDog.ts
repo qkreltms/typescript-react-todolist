@@ -3,6 +3,8 @@ import * as types from "./types";
 export const fetchDog = () => (dispatch: any) => {
   const url = "https://dog.ceo/api/breeds/image/random";
 
+  dispatch(requestDog());
+
   return fetch(url)
     .then((res) => res.json())
     .then((data) => dispatch(fetchDogSuccessful(data)), (err) => dispatch(fetchDogFailed(err)));

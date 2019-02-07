@@ -5,18 +5,19 @@ interface IProps {
   errMessage: string;
   img: string;
   status: string;
+  loading: boolean;
 }
 
 export const RandomDog: React.SFC<IProps> = (props) => {
     return (
     <section>
       <button onClick={() => props.fetchDog()}>click</button>
-      {!props.img ? (
+      {props.loading ? (
         <p>loading...</p>
       ) : props.errMessage ? (
         <p>{props.errMessage}</p>
       ) : (
-        <p><img alt="img for dogs" src={props.img} /></p>
+        <p><img src={props.img} /></p>
       )}
     </section>
   );

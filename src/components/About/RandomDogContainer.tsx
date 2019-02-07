@@ -6,6 +6,7 @@ import { RandomDog } from "./RandomDog";
 const mapStateToProps = (state: IState) => ({
     errMessage: state.randomDog.errMessage,
     img: state.randomDog.img,
+    loading: state.randomDog.loading,
     status: state.randomDog.status,
 });
 
